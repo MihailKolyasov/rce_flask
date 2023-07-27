@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Введите имя файла</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="filename-form">
+        <form method="post" action="">
+            <label for="filename">Введите имя файла:</label>
+            <input type="text" id="filename" name="filename">
+            <button type="submit">Просмотреть содержимое</button>
+        </form>
+    </div>
+    <div id="file-content">
+        {% if filename and file_content %}
+            <h2>Содержимое файла {{ filename }}:</h2>
+            <pre>{{ file_content }}</pre>
+        {% else %}
+            <h2>Файл не найден</h2>
+        {% endif %}
+    </div>
+    {% if not filename or not file_content %}
+        <style>
+            #file-content {
+                display: none;
+            }
+        </style>
+    {% endif %}
+</body>
+</html>
